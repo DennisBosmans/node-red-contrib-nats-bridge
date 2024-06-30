@@ -1,0 +1,93 @@
+[
+    {
+        "id": "nats-bridge2",
+        "type": "nats-bridge",
+        "name": "NATS Bridge",
+        "natsUrl": "nats://localhost:4222",
+        "credsFile": "/path/to/your/creds.creds",
+        "httpPort": "12345",
+        "x": 250,
+        "y": 200,
+        "wires": [
+            [
+                "switch1"
+            ]
+        ]
+    },
+    {
+        "id": "switch1",
+        "type": "switch",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "sensor-data",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "alerts",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 450,
+        "y": 200,
+        "wires": [
+            [
+                "process-sensor1"
+            ],
+            [
+                "send-alert1"
+            ]
+        ]
+    },
+    {
+        "id": "process-sensor1",
+        "type": "function",
+        "name": "Process Sensor Data",
+        "func": "// Your sensor data processing logic here\nreturn msg;",
+        "outputs": 1,
+        "x": 650,
+        "y": 160,
+        "wires": [
+            [
+                "debug2"
+            ]
+        ]
+    },
+    {
+        "id": "send-alert1",
+        "type": "function",
+        "name": "Send Alert",
+        "func": "// Your alert sending logic here\nreturn msg;",
+        "outputs": 1,
+        "x": 650,
+        "y": 240,
+        "wires": [
+            [
+                "debug2"
+            ]
+        ]
+    },
+    {
+        "id": "debug2",
+        "type": "debug",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 200,
+        "wires": []
+    }
+]
