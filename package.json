@@ -1,0 +1,16 @@
+{
+  "name": "node-red-contrib-nats-bridge",
+  "version": "1.0.0",
+  "description": "A Node-RED node that bridges HTTP and NATS",
+  "main": "nats-bridge.js",
+  "node-red": {
+    "nodes": {
+      "nats-bridge": "nats-bridge.js"
+    }
+  },
+  "dependencies": {
+    "nats": "^2.7.1"
+  },
+  "author": "Dennis Bosmans",
+  "license": "MIT"
+}
