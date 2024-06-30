@@ -1,0 +1,66 @@
+[
+    {
+        "id": "inject1",
+        "type": "inject",
+        "name": "Trigger",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "test-topic",
+        "payload": "{\"message\":\"Hello, NATS!\"}",
+        "payloadType": "json",
+        "x": 250,
+        "y": 300,
+        "wires": [
+            [
+                "http-request1"
+            ]
+        ]
+    },
+    {
+        "id": "http-request1",
+        "type": "http request",
+        "name": "Publish to NATS",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:12345",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 450,
+        "y": 300,
+        "wires": [
+            [
+                "debug3"
+            ]
+        ]
+    },
+    {
+        "id": "debug3",
+        "type": "debug",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 300,
+        "wires": []
+    }
+]
