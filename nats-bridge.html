@@ -1,0 +1,63 @@
+<script type="text/javascript">
+    RED.nodes.registerType('nats-bridge',{
+        category: 'network',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            natsUrl: {value:"nats://localhost:4222", required:true},
+            credsFile: {value:"", required:true},
+            httpPort: {value:12345, required:true, validate:RED.validators.number()}
+        },
+        inputs:0,
+        outputs:1,
+        icon: "bridge.png",
+        label: function() {
+            return this.name||"NATS Bridge";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="nats-bridge">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-natsUrl"><i class="fa fa-globe"></i> NATS URL</label>
+        <input type="text" id="node-input-natsUrl" placeholder="nats://localhost:4222">
+    </div>
+    <div class="form-row">
+        <label for="node-input-credsFile"><i class="fa fa-file"></i> Credentials File</label>
+        <input type="text" id="node-input-credsFile" placeholder="/path/to/creds/file.creds">
+    </div>
+    <div class="form-row">
+        <label for="node-input-httpPort"><i class="fa fa-plug"></i> HTTP Port</label>
+        <input type="text" id="node-input-httpPort" placeholder="12345">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="nats-bridge">
+    <p>A node that bridges HTTP and NATS, allowing you to publish and subscribe to NATS topics via HTTP requests.</p>
+    <h3>Inputs</h3>
+    <p>This node does not accept inputs from other nodes.</p>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>The message received from a subscribed NATS topic.</dd>
+        <dt>topic <span class="property-type">string</span></dt>
+        <dd>The NATS topic from which the message was received.</dd>
+    </dl>
+    <h3>Details</h3>
+    <p>This node starts an HTTP server that allows you to:</p>
+    <ul>
+        <li>Publish to NATS topics using POST requests</li>
+        <li>Subscribe to NATS topics using GET requests</li>
+    </ul>
+    <p>Subscribed messages are output from this node to be used in your Node-RED flow.</p>
+    <h3>Configuration</h3>
+    <ul>
+        <li><code>NATS URL</code>: The URL of your NATS server</li>
+        <li><code>Credentials File</code>: Path to your NATS credentials file</li>
+        <li><code>HTTP Port</code>: The port on which the HTTP server will listen (default: 12345)</li>
+    </ul>
+</script>
