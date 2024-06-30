@@ -1,0 +1,33 @@
+[
+    {
+        "id": "nats-bridge1",
+        "type": "nats-bridge",
+        "name": "NATS Bridge",
+        "natsUrl": "nats://localhost:4222",
+        "credsFile": "/path/to/your/creds.creds",
+        "httpPort": "12345",
+        "x": 250,
+        "y": 100,
+        "wires": [
+            [
+                "debug1"
+            ]
+        ]
+    },
+    {
+        "id": "debug1",
+        "type": "debug",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 100,
+        "wires": []
+    }
+]
