@@ -29,9 +29,3 @@ This README provides:
 7. Information on how to contribute
 8. License information
 9. Support details
-
-You should save this as `README.md` in the root directory of your node package. Remember to replace any placeholder information (like the GitHub repository URL) with the actual details for your project.
-
-Also, it's a good practice to include a `LICENSE` file in your package if you haven't already. Since you mentioned MIT License in the `package.json`, you should include the full text of the MIT License in a file named `LICENSE` in the root of your package.
-
-This README will help users understand how to install, configure, and use your NATS Bridge node, making it easier for them to integrate it into their Node-RED flows.
